@@ -465,7 +465,7 @@ class Tests_Image_Editor_Imagick extends WP_Image_UnitTestCase {
 		$editor = new WP_Image_Editor_Imagick( $file );
 
 		$this->assertNotInstanceOf( 'WP_Error', $editor );
-		
+
 		$editor->load();
 		$editor->resize( 5, 5 );
 		$save_to_file = tempnam( get_temp_dir(), '' ) . '.png';
@@ -520,7 +520,9 @@ class Tests_Image_Editor_Imagick extends WP_Image_UnitTestCase {
 		$pre_rotate_alpha = $pre_rotate_pixel->getColorValue( imagick::COLOR_ALPHA );
 		$save_to_file = tempnam( get_temp_dir(),'' ) . '.png';
 		$pre_rotate_editor->writeImage( $save_to_file );
-		$pre_rotate_editor->destroy();
+		// $pre_rotate_editor->destroy();
+
+		var_dump($pre_rotate_alpha);
 
 		$image_editor = new WP_Image_Editor_Imagick( $save_to_file );
 		$image_editor->load();
