@@ -61,6 +61,8 @@ abstract class WP_Image_UnitTestCase extends WP_UnitTestCase {
 		$im = new Imagick( $image_path );
 		$pixel = $im->getImagePixelColor( $point[0], $point[1] );
 		$color = $pixel->getColorValue( imagick::COLOR_ALPHA );
+		var_dump($image_path);
+		var_dump($color);
 		$this->assertEquals( $expected, $color );
 	}
 
