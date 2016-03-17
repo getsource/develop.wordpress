@@ -534,7 +534,14 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 		 * (GD rotates counter-clockwise)
 		 */
 		try {
-			$this->image->rotateImage( new ImagickPixel('none'), 360-$angle );
+			$none_pixel = new ImagickPixel('none');
+			print "\nGenerated Pixel:\n";
+			var_dump($none_pixel->getColor());
+			// var_dump($none_pixel);
+			$worked = $this->image->rotateImage( $none_pixel, 360-$angle );
+			if (true !== $worked) {
+				print "\nDidn't work!\n";
+			}
 
 			// Since this changes the dimensions of the image, update the size.
 			$result = $this->update_size();
